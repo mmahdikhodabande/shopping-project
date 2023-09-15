@@ -70,7 +70,6 @@ cover/
 
 # Translations
 *.mo
-static/
 # Django stuff:
 
 # Flask stuff:
