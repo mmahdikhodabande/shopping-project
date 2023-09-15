@@ -1,0 +1,12 @@
+{% if request.user.is_authenticated %}
+    <div class="list-group">
+        <a href="{% url 'user_panel' %}" class="list-group-item active">
+            پنل کاربری
+        </a>
+        <a href="{% url 'change_pass' %}" class="list-group-item">تغییر رمز عبور</a>
+        <a href="{% url 'edit_user_panel' %}" class="list-group-item">ویرایش اطلاعات</a>
+        <a href="{% url 'show_list_shop' %}" class="list-group-item">لیست سفارشات </a>
+    </div>
+{% else %}
+    <h1><a href="{% url 'register_page' %}">لطفا اول ثبت نام یا وارد شوید </a></h1>
+{% endif %}

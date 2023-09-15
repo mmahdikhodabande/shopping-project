@@ -1,0 +1,18 @@
+{% extends 'shared/_layout.html' %}
+{% load render_partial %}
+{% block title %}
+    تغییر کلمه عبور
+{% endblock %}
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                {% render_partial 'panel_User.views.template_user_panel_components' %}
+            </div>
+            <form action="{% url 'change_pass' %}" method="post">
+                {% csrf_token %}
+                {{ form_pass.as_p }}
+                <button type="submit" class="btn btn-primary pull-right">ثبت</button>
+        </div>
+    </div>
+{% endblock %}

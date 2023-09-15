@@ -1,0 +1,21 @@
+<div class="replay-box">
+    {% if user.is_authenticated %}
+    <form action="{% url 'article_comment' %}" method="post">
+        {% csrf_token %}
+        <div class="row">
+            <h2>نظـر خود را بنویسیـد</h2>
+            <div class="form-group col-md-12">
+                <textarea name="message" id="message" class="form-control" rows="8"
+                          placeholder="نظر شمـا"></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary pull-right">ارسال</button>
+        </div>
+    </form>
+    {% else %}
+    <div class="alert alert-warning">
+        برای ثبت نظر اول باید بشناسیمت رفیق . <a href="{% url 'register_page' %}">بیا
+        بشناسیمت</a>
+    </div>
+    {% endif %}
+
+</div><!--/Repaly Box-->

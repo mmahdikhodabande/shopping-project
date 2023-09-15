@@ -1,0 +1,54 @@
+{% extends 'shared/_layout.html' %}
+{% load render_partial %}
+{% load thumbnail %}
+{% block title %}لیست محصولات{% endblock %}
+
+{% block content %}
+
+    <section>
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-9 padding-right">
+                    <div class="features_items"><!--features_items-->
+                        <h2 class="title text-center">محصولات</h2>
+                        {% for product in products %}
+                            {% include 'includes/product_item_partial.html' with product=product %}
+                        {% endfor %}
+                        <div class="clearfix"></div>
+                        <ul class="pagination">
+                            {% if page_obj.has_previous %}
+                                <li><a href="?page={{ page_obj.previous_page_number }}">قبلی</a></li>
+                            {% endif %}
+                            {% for pageNumber in paginator.page_range %}
+                                <li class="{% if page_obj.number == pageNumber %} active {% endif %}">
+                                    <a href="?page={{ pageNumber }}">{{ pageNumber }}</a>
+                                </li>
+                            {% endfor %}
+                            {% if page_obj.has_next %}
+                                <li><a href="?page={{ page_obj.next_page_number }}">بعدی</a></li>
+                            {% endif %}
+
+                        </ul>
+                    </div><!--features_items-->
+                </div>
+
+                {% render_partial 'product_module.views.category_component_product' %}
+
+                {% for AD in baner_ADS %}
+{#                    <a href="{{ AD.url }}">#}
+{#                        <img src="{{ AD.image.url }}" alt="">#}
+{#                    </a>#}
+                    {% thumbnail AD.image "300x200" quality=95 crop='center' as im %}
+                        <a href="{{ AD.url }}">
+                            <img src="{{ im.url }}" alt="">
+
+                        </a>
+                    {% endthumbnail %}
+                {% endfor %}
+
+
+            </div>
+
+        </div>
+    </section>
+{% endblock %}

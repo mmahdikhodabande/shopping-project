@@ -1,0 +1,32 @@
+{% extends 'shared/_layout.html' %}
+{% load render_partial %}
+{% block title %}
+    پنل اصلی کاربری
+{% endblock %}
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                {% render_partial 'panel_User.views.template_user_panel_components' %}
+            </div>
+            <div class="col-md-8">
+                <table class="table table-responsive table-hover table-striped">
+                    <tr>
+                        <th class="text-right">ایمیل شما برای ارسال خبر نامه تخفیفات</th>
+                    </tr>
+
+
+                    <tr>
+                        <td class="text-right"> اینجاست {{ email }}</td>
+                        {% for emails in email %}
+                            {{ emails }}
+                        {% endfor %}
+                    </tr>
+
+                </table>
+            </div>
+        </div>
+    </div>
+
+
+{% endblock %}
