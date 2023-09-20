@@ -31,7 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    # 'communication',
+    'captcha',
     'sorl.thumbnail',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -54,6 +54,9 @@ INSTALLED_APPS = [
     'jalali_date',
     'rest_framework'
 ]
+
+RECAPTCHA_PUBLIC_KEY = "6LfLVz0oAAAAAE_OQhMY2w0P3TYEBGUFkkg8IQXT"
+RECAPTCHA_PRIVATE_KEY = "6LfLVz0oAAAAAC72hxn0Z82U7neUigeZHaO3w43v"
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

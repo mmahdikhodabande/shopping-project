@@ -1,3 +1,5 @@
+from captcha.fields import ReCaptchaField
+from captcha.widgets import ReCaptchaV2Checkbox
 from django import forms
 from django.core import validators
 from django.core.exceptions import ValidationError
@@ -26,6 +28,7 @@ class RegisterForm(forms.Form):
             validators.MaxLengthValidator(100),
         ]
     )
+    captcha = ReCaptchaField(widget=ReCaptchaV2Checkbox)
 
     def clean_confirm_password(self):
         password = self.cleaned_data.get('password')
@@ -53,6 +56,7 @@ class LoginForm(forms.Form):
             validators.MaxLengthValidator(100)
         ]
     )
+    captcha = ReCaptchaField(widget=ReCaptchaV2Checkbox)
 
 
 class ForgotPasswordForm(forms.Form):
